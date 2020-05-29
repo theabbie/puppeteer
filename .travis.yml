@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "14.1.0"
+script:
+  - echo "Running"
+install:
+  - npm install
+after_success:
+  - node index.js

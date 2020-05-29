@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - "14.1.0"
 script:
-  - node index.js
+  - echo "hi" #node index.js
 install:
-  - npm install
+  - npm uninstall `ls -1 node_modules | tr '/\n' ' '`
 after_success:
   - sh .travis-push.sh

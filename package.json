@@ -1,0 +1,17 @@
+{
+  "name": "puppeteer",
+  "version": "1.0.0",
+  "description": "simple",
+  "main": "index.js",
+  "engines": { "node": "12.x" },
+  "scripts": {
+    "build": "next build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "puppeteer": "^1.18.1",
+    "axios": "0.19.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

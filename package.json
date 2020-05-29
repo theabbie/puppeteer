@@ -10,7 +10,10 @@
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {},
+  "dependencies": {
+     "puppeteer": "^1.18.1",
+     "axios": "0.19.0"
+  },
   "author": "",
   "license": "ISC"
 }

@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "14.1.0"
 script:
-  - node index.js
+  - ffmpeg -f lavfi -i testsrc=duration=10:size=1280x720:rate=30 testsrc.mpg #node index.js
 install:
   - npm install
 after_success:

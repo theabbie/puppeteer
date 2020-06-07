@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - "14.1.0"
 script:
-  - ffmpeg -f lavfi -i testsrc=duration=10:size=1280x720:rate=30 testsrc.mpg #node index.js
+  - node index.js
 install:
-  - sudo apt-get install libavformat-dev libavfilter-dev libavdevice-dev ffmpeg #npm install
+  - npm install
 after_success:
   - sh .travis-push.sh

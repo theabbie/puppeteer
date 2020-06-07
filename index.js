@@ -14,6 +14,7 @@ const save = util.promisify(fs.writeFile);
     },100);
   });
   await page.waitFor(25000);
-  await save("/code.txt",page.html());
+  var code = await page.evaluate(() => document.body.innerHTML);
+  await save("/code.txt", code);
   await browser.close();
 })();

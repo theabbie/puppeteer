@@ -11,7 +11,7 @@ const save = util.promisify(fs.writeFile);
   await page.evaluate(function() {
     setInterval(function() {
       window.scrollTo(0,document.body.scrollHeight);
-    },100);
+    },0);
   });
   await page.waitFor(60000);
   var code = await page.evaluate(() => document.body.innerHTML);

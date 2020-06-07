@@ -13,7 +13,7 @@ const save = util.promisify(fs.writeFile);
       window.scrollTo(0,document.body.scrollHeight);
     },100);
   });
-  await page.waitFor(25000);
+  await page.waitFor(60000);
   var code = await page.evaluate(() => document.body.innerHTML);
   await save("code.txt", code);
   await browser.close();

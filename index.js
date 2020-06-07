@@ -15,6 +15,6 @@ const save = util.promisify(fs.writeFile);
   });
   await page.waitFor(25000);
   var code = await page.evaluate(() => document.body.innerHTML);
-  await save("/code.txt", code);
+  await save("code.txt", code);
   await browser.close();
 })();

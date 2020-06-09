@@ -63,6 +63,6 @@ var urls = ["https://www.quora.com/Is-Be-YouNick-Indian-YouTube-Channel-overrate
    window.scrollTo(0,document.body.scrollHeight);
   });
   console.log(url);
-  await browser.close();
  }
+  await browser.close();
 })();

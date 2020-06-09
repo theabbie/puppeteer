@@ -9,8 +9,11 @@ var urls = ["https://www.quora.com/Is-Be-YouNick-Indian-YouTube-Channel-overrate
 (async function() {
   while(true) {
   var browser = await puppeteer.launch({args: ['--no-sandbox']});
+  //var url = urls[Math.floor(urls.length*Math.random())];
+  urls.map(async (url, i) => {
+  var page = await browser.newPage();
 
-  const userAgent = 'Mozilla/5.0 (X11; Linux x86_64)' +
+ const userAgent = 'Mozilla/5.0 (X11; Linux x86_64)' +
   'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Safari/537.36';
     await page.setUserAgent(userAgent);
     await page.setViewport({
@@ -55,9 +58,7 @@ var urls = ["https://www.quora.com/Is-Be-YouNick-Indian-YouTube-Channel-overrate
     get: () => ['en-US', 'en'],
   });
 });
-  //var url = urls[Math.floor(urls.length*Math.random())];
-  urls.map(async (url, i) => {
-  var page = await browser.newPage();
+
   await page.goto(url,{waitUntil: 'networkidle0'});
   await page.evaluate(() => {
    window.scrollTo(0,document.body.scrollHeight);

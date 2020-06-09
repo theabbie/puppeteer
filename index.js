@@ -57,11 +57,10 @@ var urls = ["https://www.quora.com/Is-Be-YouNick-Indian-YouTube-Channel-overrate
   });
 });
   var url = urls[Math.floor(urls.length*Math.random())];
-  await page.goto(url);
+  await page.goto(url,{waitUntil: 'networkidle0'});
   await page.evaluate(() => {
    window.scrollTo(0,document.body.scrollHeight);
   });
-  await page.waitFor(500);
   console.log(url);
   await browser.close();
   }

@@ -9,7 +9,7 @@ var urls = ["https://www.quora.com/Is-Be-YouNick-Indian-YouTube-Channel-overrate
 (async function() {
   var browser = await puppeteer.launch({args: ['--no-sandbox']});
   while(true) {
-  var url = urls[Math.floor(urls.length*Math.random())];
+  var url = "https://fcrit.academia.edu/theabbie"; //urls[Math.floor(urls.length*Math.random())];
   var page = await browser.newPage();
 
  const userAgent = 'Mozilla/5.0 (X11; Linux x86_64)' +

@@ -56,7 +56,7 @@ const save = util.promisify(fs.writeFile);
 });
 
   await page.goto(url,{waitUntil: 'networkidle0'});
-  var meta await page.evaluate(() => {return window._config;});
+  var meta = await page.evaluate(() => {return window._config;});
   console.log(meta);
   await browser.close();
 })();

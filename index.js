@@ -54,8 +54,8 @@ const save = util.promisify(fs.writeFile);
     get: () => ['en-US', 'en'],
   });
 });
-
-  await page.goto(url,{waitUntil: 'networkidle0'});
+  await page.goto(url);
+  await page.waitFor(3500);
   var meta = await page.evaluate(() => {return window._config;});
   console.log(meta);
   await browser.close();

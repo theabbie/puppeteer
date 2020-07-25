@@ -5,5 +5,3 @@ script:
   - node index.js
 install:
   - npm install
-after_success:
-  - sh .travis-push.sh

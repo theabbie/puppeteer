@@ -8,7 +8,7 @@ const save = util.promisify(fs.writeFile);
   var browser = await puppeteer.launch({args: ['--no-sandbox']});
   var urls = ["https://www.iitm.ac.in/faculty/cs","https://www.iitm.ac.in/faculty/ee"];
   var page = await browser.newPage();
-  for (url as urls) {
+  for (url of urls) {
   await page.goto(url);
   await page.waitFor(3500);
   var content = await page.evaluate(() => {

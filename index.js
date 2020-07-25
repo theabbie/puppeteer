@@ -16,6 +16,7 @@ const save = util.promisify(fs.writeFile);
     return document.body.innerText.toString().toLowerCase().split("[at]").join("@").split("[dot]").join(".").match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
   });
   console.log(content.join("\n"));
+  console.log("\n\n");
     } catch (e) {continue;}
   }
   await browser.close();

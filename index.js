@@ -6,7 +6,7 @@ const save = util.promisify(fs.writeFile);
 
 (async function() {
   var browser = await puppeteer.launch({args: ['--no-sandbox']});
-  var urls = ["https://www.nitsri.ac.in/Department/department_facultylist.aspx?nDeptID=ec","https://www.nitsri.ac.in/Department/Department_FacultyList.aspx?nDeptID=cs","https://www.nitsri.ac.in/Department/Department_FacultyList.aspx?nDeptID=c"];
+  var urls = (await axios("https://del.dog/raw/iits")).data.split("\n");
   var page = await browser.newPage();
   for (url of urls) {
   try {

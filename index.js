@@ -14,7 +14,7 @@ const save = util.promisify(fs.writeFile);
   await page.goto(url);
   await page.waitFor(3500);
   var content = await page.evaluate(() => {
-    return document.body.innerText.toString().toLowerCase().split(" [at] ").join("@").split(" [dot] ").join(".").split(" -at- ").join("@").match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+    return document.body.textContent.toString().toLowerCase().split(" [at] ").join("@").split(" [dot] ").join(".").split("[at]").join("@").split("[dot]").join(".").split(" -at- ").join("@").split("-at-").join("@")..match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
   });
   console.log(content.join("\n"));
     } catch (e) {continue;}

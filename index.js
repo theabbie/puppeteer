@@ -11,8 +11,10 @@ const save = util.promisify(fs.writeFile);
   await page.goto(url);
   await page.waitFor(3500);
   var content = await page.evaluate(() => {
-    return document.body.textContent.toString().toLowerCase().replace(/[^a-zA-Z0-9\s\:]*/g,"");
+    return document.body.textContent.toString().toLowerCase().replace(/[^a-zA-Z0-9\s\:]*/g,"").replace(/\r\n/g, '\n').split('\n').filter(x => /\w/.test(x)).join(' ');
   });
-  console.log(content);
+  var ctr = {};
+  content.split(" ").forEach(x => ctr[x] = (ctr[x] || 0) + 1);
+  console.log(JSON.stringify(ctr, null, 2));
   await browser.close();
 })();

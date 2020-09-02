@@ -6,18 +6,13 @@ const save = util.promisify(fs.writeFile);
 
 (async function() {
   var browser = await puppeteer.launch({args: ['--no-sandbox']});
-  var urls = (await axios("https://del.dog/raw/iits")).data.split("\n");
   var page = await browser.newPage();
-  for (url of urls) {
-  if (url.length==0) {console.log("\n\n"); continue;}
-  try {
+  var url = "https://devrant.com/rants/2948571/i-think-the-fact-that-even-apple-cant-unlock-your-phone-if-you-forget-your-passc";
   await page.goto(url);
   await page.waitFor(3500);
   var content = await page.evaluate(() => {
-    return document.body.textContent.toString().toLowerCase().split(" [at] ").join("@").split(" [dot] ").join(".").split("[at]").join("@").split("[dot]").join(".").split(" -at- ").join("@").split("-at-").join("@").match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+    return document.body.textContent.toString().toLowerCase().replace(/[^a-zA-Z0-9\s\:]*/g,"");
   });
-  console.log(content.join("\n"));
-    } catch (e) {continue;}
-  }
+  console.log(content);
   await browser.close();
 })();

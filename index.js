@@ -17,7 +17,7 @@ const save = util.promisify(fs.writeFile);
   content.split(" ").forEach(x => ctr[x] = (ctr[x] || 0) + 1);
   var count = [];
   for (t in ctr) count.push([t,ctr[t]]);
-  count.sort((a,b) => a[1] - b[1]).map(l => l[0]+": "+l[1]);
+  count.sort((a,b) => (+b[1]) - (+a[1])).map(l => l[0]+": "+l[1]);
   console.log(count.join("\n"));
   await browser.close();
 })();

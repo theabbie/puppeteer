@@ -30,10 +30,19 @@ const save = util.promisify(fs.writeFile);
      rants = [...rants, ...k("loc").map((i,x)=>+url.parse(k(x).text(),true).pathname.split("/")[2]).get()]
   }
   
-  var token = (await devRant.login('assmaster', process.argv[2]))["auth_token"];
+  var i = 1;
+  var token = (await devRant.login('-assmaster', process.argv[2]))["auth_token"];
+  var vote_token = (await devRant.login('god-of-newbies', process.argv[2]))["auth_token"];
 
   for (rant of rants) {
+     if (i%30==0) {
+        var ctr = (await devRant.profile("-assmaster",vote_token,"comments")).content.content.comments.map(x=>x.id)
+        for(x of ctr) {
+           var vote = await devRant.voteComment(1,+x,vote_token);
+        }
+     }
      await devRant.postComment("Nice",rant,token);
      console.log(rant)
+     i++;
   }
 })();

@@ -32,19 +32,11 @@ const save = util.promisify(fs.writeFile);
   
   var i = 1;
   var token = (await devRant.login('-assmaster', process.argv[2]))["auth_token"];
-  var vote_token = (await devRant.login('god-of-newbies', process.argv[2]))["auth_token"];
-
+  
   for (rant of rants) {
      try {
-     if (i%30==0) {
-        var ctr = (await devRant.profile("-assmaster",vote_token,"comments")).content.content.comments.map(x=>x.id)
-        for(x of ctr) {
-           var vote = await devRant.voteComment(1,+x,vote_token);
-        }
-     }
-     await devRant.postComment("Nice",rant,token);
+     await devRant.vote(1,rant,token);
      console.log(rant)
-     i++;
      }
      catch(e) {
         continue;

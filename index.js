@@ -29,5 +29,10 @@ const save = util.promisify(fs.writeFile);
      rants = [...rants, ...k("loc").map((i,x)=>url.parse(k(x).text(),true).pathname.split("/")[2]).get()]
   }
   
-  console.log(rants);
+  var token = (await devRant.login('assmaster', process.argv[2]))["auth_token"];
+
+  for (rant of rants) {
+     await devRant.postComment("Nice",rant,token);
+     console.log(rant)
+  }
 })();

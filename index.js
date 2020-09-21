@@ -35,6 +35,7 @@ const save = util.promisify(fs.writeFile);
   var vote_token = (await devRant.login('god-of-newbies', process.argv[2]))["auth_token"];
 
   for (rant of rants) {
+     try {
      if (i%30==0) {
         var ctr = (await devRant.profile("-assmaster",vote_token,"comments")).content.content.comments.map(x=>x.id)
         for(x of ctr) {
@@ -44,5 +45,9 @@ const save = util.promisify(fs.writeFile);
      await devRant.postComment("Nice",rant,token);
      console.log(rant)
      i++;
+     }
+     catch(e) {
+        continue;
+     }
   }
 })();

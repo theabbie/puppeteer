@@ -4,6 +4,7 @@ const fs = require("fs");
 var cheerio = require("cheerio");
 const util = require("util");
 var url = require("url");
+var devRant = require("rantscript");
 const save = util.promisify(fs.writeFile);
 
 (async function() {
@@ -26,7 +27,7 @@ const save = util.promisify(fs.writeFile);
   
   for (p of maps) {
      var k = cheerio.load((await axios(p,{headers: {"User-Agent": "Googlebot-News"}})).data,{xmlMode: true})
-     rants = [...rants, ...k("loc").map((i,x)=>url.parse(k(x).text(),true).pathname.split("/")[2]).get()]
+     rants = [...rants, ...k("loc").map((i,x)=>+url.parse(k(x).text(),true).pathname.split("/")[2]).get()]
   }
   
   var token = (await devRant.login('assmaster', process.argv[2]))["auth_token"];

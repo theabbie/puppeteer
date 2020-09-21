@@ -24,8 +24,8 @@ const save = util.promisify(fs.writeFile);
   var rants = [];
   var maps = ["https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_2.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_3.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_4.xml","https://devrant.com/static/devrant/sitemaps/current/devrant_com_sitemap_5.xml"]
   
-  for (x of maps) {
-     var k = cheerio.load((await axios(x,{headers: {"User-Agent": "Googlebot-News"}})).data,{xmlMode: true})
+  for (p of maps) {
+     var k = cheerio.load((await axios(p,{headers: {"User-Agent": "Googlebot-News"}})).data,{xmlMode: true})
      rants = [...rants, ...k("loc").map((i,x)=>url.parse(k(x).text(),true).pathname.split("/")[2]).get()]
   }
   

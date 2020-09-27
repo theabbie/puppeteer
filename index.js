@@ -13,6 +13,7 @@ var imgur = require("imgur");
   var page = await browser.newPage();
   await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36');
   await page.goto('https://www.quora.com');
+  try {
   await page.type('input[tabindex="1"][name="email"]', "assmaster@srvrr.tk");
   await page.type('input[tabindex="2"][name="password"]', process.argv[2]);
   await page.keyboard.press('Tab');
@@ -22,4 +23,11 @@ var imgur = require("imgur");
   await page.screenshot({path: 'ss.png'});
   var link = (await imgur.uploadFile('ss.png')).data.link;
   console.log(link);
+  }
+  catch (e) {
+  console.log(e.message);
+  await page.screenshot({path: 'ss.png'});
+  var link = (await imgur.uploadFile('ss.png')).data.link;
+  console.log(link);
+  }
 })();

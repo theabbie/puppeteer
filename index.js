@@ -19,7 +19,8 @@ var imgur = require("imgur");
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
   await page.waitForNavigation();
-  await page.click('a.deny_push_notif-button');
+  var cookies = await page.cookies();
+  console.log(cookies);
   await page.screenshot({path: 'ss.png'});
   var link = (await imgur.uploadFile('ss.png')).data.link;
   console.log(link);
@@ -30,4 +31,5 @@ var imgur = require("imgur");
   var link = (await imgur.uploadFile('ss.png')).data.link;
   console.log(link);
   }
+  await browser.close();
 })();

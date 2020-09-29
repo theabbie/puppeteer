@@ -194,9 +194,9 @@ var imgur = require("imgur");
 
   await page.waitFor(1500);
 
-  await page.evaluate(function() {
+  await page.evaluate(function(content) {
   	document.querySelector(".doc").innerHTML=content;
-  });
+  },content);
 
   await page.waitFor(1500);
 

@@ -149,15 +149,34 @@ var imgur = require("imgur");
     sameSite: 'Strict'
   }
   ]);
-  await page.goto('https://www.quora.com');
   try {
   /*await page.type('input[tabindex="1"][name="email"]', "assmaster@srvrr.tk");
   await page.type('input[tabindex="2"][name="password"]', process.argv[2]);
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');*/
-  await page.waitForNavigation();
-  /*var cookies = await page.cookies();
-  console.log(cookies);*/
+    
+  await page.goto('https://www.quora.com/What-is-10-+-10-x-10-equal-to', {
+    waitUntil: 'networkidle0',
+  });
+
+  await page.evaluate(function() {
+  	document.querySelectorAll("button[tabindex='0']")[2].click();
+  });
+
+  await page.waitFor(1500);
+
+  await page.evaluate(function() {
+  	document.querySelector(".doc").innerHTML="110";
+  });
+
+  await page.waitFor(1500);
+
+  await page.evaluate(function() {
+  	document.querySelectorAll("button[tabindex='0']")[9].click();
+  });
+    
+  await page.waitFor(1500);
+    
   await page.screenshot({path: 'ss.png'});
   var link = (await imgur.uploadFile('ss.png')).data.link;
   console.log(link);

@@ -186,7 +186,7 @@ var imgur = require("imgur");
   var content = await google.evaluate(function() {
   	document.body.querySelectorAll("script").forEach(x=>x.remove())
   	document.body.querySelectorAll("style").forEach(x=>x.remove())
-  	return [...new Set(Array.from(document.body.querySelectorAll("*")).filter(x=>x.textContent.length/x.innerHTML.length>0.5).map(x=>(x.textContent.match(/\w+/g) || []).join(" ")).filter(t=>t.length>150).filter(a=>{len = a.length/a.split(" ").length; return len>3 && len<10}))].join(" ");
+  	return [...new Set(Array.from(document.body.querySelectorAll("*")).filter(x=>x.textContent.length/x.innerHTML.length>0.5).map(x=>(x.textContent.match(/\w+/g) || []).join(" ")).filter(t=>t.length>150).filter(a=>{len = a.length/a.split(" ").length; return len>3 && len<10}))].join("\n");
   })
 
   await page.evaluate(function() {

@@ -15,10 +15,10 @@ var imgur = require("imgur");
   await page.setCookie(...[
   {
     name: 'm-b_lax',
-    value: 'gDKDBMVil4gi-uswyPsDbg==',
+    value: 'M1yGXDgodU99InCeLlzN4w==',
     domain: '.quora.com',
     path: '/',
-    expires: 1664299362.980879,
+    expires: 1664450875.584464,
     size: 31,
     httpOnly: true,
     secure: true,
@@ -27,10 +27,10 @@ var imgur = require("imgur");
   },
   {
     name: 'm-s',
-    value: 'y_D5-g74W9JieNiEn5f2Gg==',
+    value: 'gkQonK5vg6PDb0AilbFL0g==',
     domain: '.quora.com',
     path: '/',
-    expires: 1664299362.98091,
+    expires: 1664450875.584554,
     size: 27,
     httpOnly: true,
     secure: true,
@@ -38,10 +38,10 @@ var imgur = require("imgur");
   },
   {
     name: 'm-lat',
-    value: '5YhsgSH-y5JZQ1gCpPum3g==',
+    value: 'b08Vh2DhLKsLGdvkOtit5A==',
     domain: '.quora.com',
     path: '/',
-    expires: 1664299361.186446,
+    expires: 1664450869.308044,
     size: 29,
     httpOnly: true,
     secure: true,
@@ -49,10 +49,10 @@ var imgur = require("imgur");
   },
   {
     name: 'm-uid',
-    value: '1305000855',
+    value: '1307125887',
     domain: '.quora.com',
     path: '/',
-    expires: 1664342561.487394,
+    expires: 1664494069.670865,
     size: 15,
     httpOnly: false,
     secure: false,
@@ -60,10 +60,10 @@ var imgur = require("imgur");
   },
   {
     name: 'm-css_v',
-    value: 'main-e5a39c6f58816226',
+    value: 'main-5208944b2829bb2c',
     domain: '.quora.com',
     path: '/',
-    expires: 1632763360,
+    expires: 1632914855,
     size: 28,
     httpOnly: false,
     secure: false,
@@ -71,21 +71,21 @@ var imgur = require("imgur");
   },
   {
     name: 'm-tz',
-    value: '0',
+    value: '-330',
     domain: '.quora.com',
     path: '/',
-    expires: 1632763363,
-    size: 5,
+    expires: 1632914871,
+    size: 8,
     httpOnly: false,
     secure: false,
     session: false
   },
   {
     name: 'm-b',
-    value: 'gDKDBMVil4gi-uswyPsDbg==',
+    value: 'M1yGXDgodU99InCeLlzN4w==',
     domain: '.quora.com',
     path: '/',
-    expires: 1664299362.980838,
+    expires: 1664450875.584386,
     size: 27,
     httpOnly: true,
     secure: true,
@@ -97,7 +97,7 @@ var imgur = require("imgur");
     value: '57f768eb9618f0e6',
     domain: '.quora.com',
     path: '/',
-    expires: 1664342559.887239,
+    expires: 1664494054.491351,
     size: 25,
     httpOnly: false,
     secure: false,
@@ -108,7 +108,7 @@ var imgur = require("imgur");
     value: '608eb973920cb9b6',
     domain: '.quora.com',
     path: '/',
-    expires: 1664342559.887233,
+    expires: 1664494054.491314,
     size: 44,
     httpOnly: false,
     secure: false,
@@ -119,7 +119,7 @@ var imgur = require("imgur");
     value: '1',
     domain: '.quora.com',
     path: '/',
-    expires: 1664342561.186458,
+    expires: 1664494069.308139,
     size: 8,
     httpOnly: false,
     secure: false,
@@ -138,10 +138,10 @@ var imgur = require("imgur");
   },
   {
     name: 'm-b_strict',
-    value: 'gDKDBMVil4gi-uswyPsDbg==',
+    value: 'M1yGXDgodU99InCeLlzN4w==',
     domain: '.quora.com',
     path: '/',
-    expires: 1664299362.980894,
+    expires: 1664450875.584509,
     size: 34,
     httpOnly: true,
     secure: true,
@@ -149,6 +149,7 @@ var imgur = require("imgur");
     sameSite: 'Strict'
   }
   ]);
+  
   try {
   /*await page.type('input[tabindex="1"][name="email"]', "assmaster@srvrr.tk");
   await page.type('input[tabindex="2"][name="password"]', process.argv[2]);

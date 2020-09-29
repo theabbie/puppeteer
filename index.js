@@ -157,7 +157,7 @@ var imgur = require("imgur");
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');*/
     
-  var q = "unwritten social rules";
+  var q = "facts i don't know";
     
   await page.goto('https://google.com/search?q='+q+" quora", {
     waitUntil: 'networkidle0',
@@ -165,11 +165,12 @@ var imgur = require("imgur");
     
   await page.evaluate(function() {
   	document.querySelectorAll("div.r a")[0].click();
-  })
-  await page.waitFor(5000);
+  });
+    
+  await page.waitForNavigation();
   
   var question = await page.evaluate(function() {
-  	document.querySelector("title").innerHTML.slice(0,-8);
+  	return document.querySelector("title").innerHTML.slice(0,-8);
  })
     
   await google.goto('https://google.com/search?q='+question, {

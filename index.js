@@ -11,6 +11,7 @@ var imgur = require("imgur");
 (async function() {
   var browser = await puppeteer.launch({args: ['--no-sandbox']});
   var page = await browser.newPage();
+  var google = await browser.newPage();
   await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36');
   await page.setCookie(...[
   {
@@ -170,8 +171,6 @@ var imgur = require("imgur");
   var question = await page.evaluate(function() {
   	document.body.querySelector("title").innerHTML.slice(0,-8);
  })
-   
-  var google = await browser.newPage();
     
   await google.goto('https://google.com/search?q='+question, {
     waitUntil: 'networkidle0',
@@ -216,6 +215,9 @@ var imgur = require("imgur");
   await page.screenshot({path: 'ss.png'});
   var link = (await imgur.uploadFile('ss.png')).data.link;
   console.log(link);
+  await google.screenshot({path: 'gss.png'});
+  var glink = (await imgur.uploadFile('gss.png')).data.link;
+  console.log(glink);
   }
   await browser.close();
 })();

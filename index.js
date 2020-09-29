@@ -155,9 +155,38 @@ var imgur = require("imgur");
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');*/
     
-  await page.goto('https://www.quora.com/What-is-10-+-10-x-10-equal-to', {
+  var q = "Mukesh Ambani";
+    
+  await page.goto('https://google.com/search?q='+q+" quora", {
     waitUntil: 'networkidle0',
   });
+    
+  await page.evaluate(function() {
+  	document.querySelectorAll("div.r a")[0].click();
+  })
+  await page.waitFor(5000);
+  
+  var question = await page.evaluate(function() {
+  	document.body.querySelector("title").innerHTML.slice(0,-8);
+ })
+   
+  var google = await browser.newPage();
+    
+  await google.goto('https://google.com/search?q='+question, {
+    waitUntil: 'networkidle0',
+  });
+    
+  await google.evaluate(function() {
+  	document.querySelectorAll("div.r a")[0].click();
+  });
+  
+  await google.waitFor(5000);
+  
+  var content = await google.evaluate(function() {
+  	document.body.querySelectorAll("script").forEach(x=>x.remove())
+  	document.body.querySelectorAll("style").forEach(x=>x.remove())
+  	return [...new Set(Array.from(document.body.querySelectorAll("*")).filter(x=>x.textContent.length/x.innerHTML.length>0.5).map(x=>(x.textContent.match(/\w+/g) || []).join(" ")).filter(t=>t.length>150).filter(a=>{len = a.length/a.split(" ").length; return len>3 && len<10}))].join(" ");
+  })
 
   await page.evaluate(function() {
   	document.querySelectorAll("button[tabindex='0']")[2].click();
@@ -166,7 +195,7 @@ var imgur = require("imgur");
   await page.waitFor(1500);
 
   await page.evaluate(function() {
-  	document.querySelector(".doc").innerHTML="110";
+  	document.querySelector(".doc").innerHTML=content;
   });
 
   await page.waitFor(1500);

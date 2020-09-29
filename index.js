@@ -169,7 +169,7 @@ var imgur = require("imgur");
   await page.waitFor(5000);
   
   var question = await page.evaluate(function() {
-  	document.body.querySelector("title").innerHTML.slice(0,-8);
+  	document.querySelector("title").innerHTML.slice(0,-8);
  })
     
   await google.goto('https://google.com/search?q='+question, {

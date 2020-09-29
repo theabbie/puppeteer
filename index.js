@@ -157,7 +157,7 @@ var imgur = require("imgur");
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');*/
     
-  var q = "inspirational quotes";
+  var q = "If X/10+29=39, what is the value of x";
     
   await page.goto('https://google.com/search?q='+q+" quora", {
     waitUntil: 'networkidle0',

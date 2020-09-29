@@ -193,7 +193,7 @@ var imgur = require("imgur");
   	document.querySelectorAll("button[tabindex='0']")[2].click();
   });
 
-  await page.waitFor(1500);
+  await page.waitFor(2500);
 
   await page.evaluate(function(content) {
   	document.querySelector(".doc").innerHTML=content;

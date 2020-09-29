@@ -157,7 +157,7 @@ var imgur = require("imgur");
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');*/
     
-  var q = "Mukesh Ambani";
+  var q = "unwritten social rules";
     
   await page.goto('https://google.com/search?q='+q+" quora", {
     waitUntil: 'networkidle0',
